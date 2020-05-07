@@ -18,6 +18,6 @@ public class World124 {
 			answer = namoji + answer;
 			// System.out.println(anwser+" <--- anwser");
 		}
-		return answer;
+		System.out.println(answer);
 	}
 }
