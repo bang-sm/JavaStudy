@@ -2,6 +2,9 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
 
 a{text-decoration: none;font-family: DWImpactamin;}
+span{
+  font-family: DWImpactamin;
+}
 @font-face {
 
     font-family: DWImpactamin; 
@@ -9,6 +12,7 @@ a{text-decoration: none;font-family: DWImpactamin;}
     src: url("../TTF/DWImpactamin.ttf"); /* 가는글씨체 웹폰트주소 지정*/
   }
 
+*:focus { outline:none; }
 /*************pc용 사이즈*****************/
 
 .col-1 {width: 8.33%; }  /* 1칸 짜리 폭 */
