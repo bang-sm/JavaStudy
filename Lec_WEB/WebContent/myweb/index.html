@@ -33,7 +33,15 @@
             var slicknext = $('.slick-next');
             slicknext.addClass('zoom2');
 
+            $('#quick_btn_content').click(function(){
+                var offset = $('#header').offset(); //선택한 태그의 위치를 반환
+                $('html').animate({scrollTop : offset.top}, 400);
+             });
+             $('#quick_btn_content2').click(function(){
+                var offset = $('#content2').offset(); //선택한 태그의 위치를 반환
+                $('html').animate({scrollTop : offset.top}, 400);
 
+            });
          });
     </script>
 
@@ -45,18 +53,23 @@
             float: left;
         }
         .zoom {
-            transition: transform .2s; /* Animation */
+            transition: transform .2s; 
             margin: 0 auto;
         }
         .zoom2 {
-            transition: transform .2s; /* Animation */
+            transition: transform .2s;
             margin: 0 auto;
         }
         .zoom:hover {
-            transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            transform: scale(1.1); 
+        }
+        .zoom:hover span{
+            background-color: #006680;
+            padding-left:20px;
+            transition: 0.5s ease;
         }
         .zoom2:hover {
-            transform: scale(2.0); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            transform: scale(1.7); 
         }
 
         /*********************PC기준 CSS********************************************/
@@ -214,15 +227,37 @@
          /** 챔프 리스트**/
          .champ_list span{
                 display: inline-block;
-                overflow: hidden;background-color: #061C25;
+                overflow: hidden;
+                background-color: #061C25;
                 width: 80%;
                 padding:10px;
                 color: #fff;
                 text-align: left;
                 margin-bottom: 15px;
+                font-size: 10px;
         }
-
-         /**챔프리스끝나는지점**/
+        #champ_choice{
+            position: relative;
+            text-align: center;
+            background-color: rgb(248, 248, 248);
+            padding-top: 105px;
+        }
+        #champ_choice span{
+            position: absolute;
+            left: 0;
+        }
+        
+        #champ_list_box{
+            text-align: center;
+            margin: 150px auto;
+            width: 85%;
+            overflow: hidden;
+            border-image: linear-gradient(to bottom, #b7cccc 10%, #3886FF 100%);
+            border-image-slice: 1;
+            border-left: 7px solid #061C25;
+            border-right: 7px  solid #061C25;
+        }
+         /**챔프리스트끝나는지점**/
 
         /*************PC기준 CSS 끝나는지점******************************************/
 
@@ -272,6 +307,7 @@
 
 
             /**태블릿에서는 없어야할것**/
+
             
             /**태블릿에서는 없어야할것**/
 
@@ -314,14 +350,63 @@
         }
         /*************태블릿 CSS 끝나는지점*****************/
   
-    
+        /*************모바일 CSS **************************/
+        /* 3: 600px 이하 일때 적용 */
+        @media screen and (max-width:600px){
+
+            .col-m-1 {width: 8.33%;}  /* 1칸 짜리 폭 */
+            .col-m-2 {width: 16.66%; }  /* 2칸 짜리 폭 */
+            .col-m-3 {width: 25%;}
+            .col-m-4 {width: 33.33%;height: 100px;}
+            .col-m-5 {width: 41.66%;}
+            .col-m-6 {width: 50%;}
+            .col-m-7 {width: 58.33%;}
+            .col-m-8 {width: 66.66%;}
+            .col-m-9 {width: 75%;}
+            .col-m-10 {width: 83.33%;}
+            .col-m-11 {width: 91.66%;}
+            .col-m-12 {width: 100%;}
+
+            /**모바일에서는 없어야할것**/
+            .icon-bar{display: none;}
+            
+            /**모바일에서는 없어야할것**/
+        }
+        /*************모바일 CSS 끝나는지점*****************/
+        
+        .icon-bar {
+            position: fixed;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        .icon-bar a {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 20px;
+            background-color: #3886FF;
+        }
 
     </style>
 </head>
 
 <body>
+    <!--퀵 메뉴 https://images.samsung.com/is/image/samsung/p5/sec/common/chatbot/2020/Floating__plus.png?$ORIGIN_PNG$-->
+    <div class="icon-bar">
+        <a href="#" id="quick_btn_content"></a> 
+        <div style="margin-bottom:5px;"></div>
+        <a href="#" id="quick_btn_content2"></a> 
+    </div>
+    <!--퀵 메뉴 -->
+    <div class="clear"></div>
+
     <!--헤더 부분 -->
-    <header>
+    <header id="header">
         <div id="logoBox">
             <img id="logo" src="img/logo.png">
         </div>
@@ -431,15 +516,13 @@
     <!--헤더 부분 마무리 -->
     <div class="clear"></div>
 
-    <!--컨텐츠 부분 시작-->
-    <div id="content">
-
+    <!--첫번째 부분 시작-->
+    <div id="content" class="col-12">
         <!--슬라이드 컨텐츠-->
         <section class="visual" >
             <div class="video_box">
-                <video class="video" autoplay loop> 
+                <video class="video" autoplay loop preload="auto" >  
                     <source src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/ko-kr/production/ko-kr/static/hero-0632cbf2872c5cc0dffa93d2ae8a29e8.webm" type="video/webm">
-
                 </video>
                 <div class="video_front_logo_box">
                     <img class="video_front_logo" src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/ko-kr/production/ko-kr/static/logo-1200-589b3ef693ce8a750fa4b4704f1e61f2.png">
@@ -457,98 +540,99 @@
             </div>
         </section>
         <!--슬라이드 컨텐츠-->
-
-        <!--챔피언 리스트 -->
-        <div style="margin-top: 50px;" id="champ_list_box">
-            <div style="text-align: center;">
-                <span class="col-12" style="font-size: 50px;">챔피언을 선택하세요</span>
-            </div>
-            <div style="text-align:center;margin:80px auto;width:70%;">
-
-                <div class="col-2 float_left champ_list zoom">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-                <div class="col-2 float_left champ_list">
-                    <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
-                    <span>가렌</span>
-                </div>
-
-                
-            </div>
-        </div>
-        <!--챔피언 리스트 -->
-
-        <!--3번째 컨텐츠-->
-        <div>
-            <img style="width:100%;height:850px" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltfe81204b8ec63e0e/5e6184a918d3347ceffbbd6d/TFT.S3_GALAXIES.ARTICLE-2.jpg"/>
-        </div>
-        <!--3번째 컨텐츠-->
     </div>
+    <!--첫번째 부분 시작-->
+    <div class="clear"></div>
+
+    <!--챔피언 리스트 -->
+    <div id="content2" style="overflow: hidden;padding-bottom: 10px;">
+        <div id="champ_choice" style="text-align: center;">
+            <span class="col-12" style="font-size: 50px;top:75%">챔피언을 선택하세요</span>
+            <span class="col-12" style="font-size: 13px;top:135%">
+                140여 명의 챔피언 중 자신의 플레이 스타일에 어울리는 챔피언을 찾아보세요
+            </span>
+            <span class="col-12" style="font-size: 13px;top:155%">
+                한 명의 챔피언을 완벽히 익히거나 모든 챔피언을 사용해 볼 수도 있습니다.
+            </span>
+        </div>
+        <div id="champ_list_box">
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte41a162aed9339b7/5db05fc60b39e86c2f83dc0d/RiotX_ChampionList_garen.jpg?quality=90&width=250"></img>
+                <span>가렌</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt5890d1ab5c8be01f/5db05fc6823d426762825fe5/RiotX_ChampionList_galio.jpg?quality=90&width=250"></img>
+                <span>갈리오</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltfdff3781ccfb2a5c/5db05fc689fb926b491ed811/RiotX_ChampionList_gangplank.jpg?quality=90&width=250"></img>
+                <span>갱플랭크</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt795841adba722f85/5db05fc43a326d6df6c0e7b9/RiotX_ChampionList_gragas.jpg?quality=90&width=250"></img>
+                <span>그라가스</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltd8935c6b4025d320/5db05fc4bd24496c390ae4e4/RiotX_ChampionList_graves.jpg?quality=90&width=250"></img>
+                <span>그레이브즈</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blta80f79dd96ee5d30/5db05fc6df78486c826dcd00/RiotX_ChampionList_gnar.jpg?quality=90&width=250"></img>
+                <span>나르</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt13bec39f49dc35ee/5db05fe956458c6b3fc1751f/RiotX_ChampionList_nami.jpg?quality=90&width=250"></img>
+                <span>나미</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt20a4b154b1756b56/5db05fe7a6470d6ab91ce5a0/RiotX_ChampionList_nasus.jpg?quality=90&width=250"></img>
+                <span>나서스</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltf945a57aa16cea57/5db05fe7347d1c6baa57be37/RiotX_ChampionList_nautilus.jpg?quality=90&width=250"></img>
+                <span>노틸러스</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltfc73e3c7dda28d31/5db05ff2adc8656c7d24e7f0/RiotX_ChampionList_nocturne.jpg?quality=90&width=250"></img>
+                <span>녹턴</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltf613746635c6d3c8/5db05ff256458c6b3fc17527/RiotX_ChampionList_nunu.jpg?quality=90&width=250"></img>
+                <span>누누</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt5a2da06d413f7c15/5db05ff1df78486c826dcd18/RiotX_ChampionList_nidalee.jpg?quality=90&width=250"></img>
+                <span>니달리</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blta62eaac6ad26a4f5/5db05fe7adc8656c7d24e7ea/RiotX_ChampionList_neeko.jpg?quality=90&width=250"></img>
+                <span>니코</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt38b52be4a2cb1004/5db05fb19481396d6bdd01ac/RiotX_ChampionList_darius.jpg?quality=90&width=250"></img>
+                <span>다리우스</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt56570083d2a5e20e/5db05fbc823d426762825fdf/RiotX_ChampionList_diana.jpg?quality=90&width=250"></img>
+                <span>다이애나</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltc0be728e4cbb8f2a/5db05fbc89fb926b491ed80b/RiotX_ChampionList_draven.jpg?quality=90&width=250"></img>
+                <span>드레이븐</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt8af977ce4fa7804b/5db05ffa2dc72966da746714/RiotX_ChampionList_ryze.jpg?quality=90&width=250"></img>
+                <span>라이즈</span>
+            </div>
+            <div class="col-2 col-t-4 col-m-6 float_left champ_list zoom">
+                <img style="width: 80%;height: auto;" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltbe844b30961ccb7c/5db05ffb2140ec675d68f4ad/RiotX_ChampionList_rakan.jpg?quality=90&width=250"></img>
+                <span>라칸</span>
+            </div>
+
+            
+        </div>
+    </div>
+    <!--챔피언 리스트 -->
 
 
 </body>
